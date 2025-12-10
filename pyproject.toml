@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "memkmc"
+version = "0.1.0"
+description = "Tools for voxelization, Zacros input generation, and post-processing of kMC simulations in heterogeneous membranes."
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+  { name = "Your Name" }
+]
+license = { text = "MIT" }
+dependencies = [
+  "numpy",
+  "matplotlib"
+]
+
+[project.scripts]
+memkmc-voxelize = "memkmc.cli_voxelize:main"
+memkmc-zacros-inputs = "memkmc.cli_zacros_inputs:main"
+memkmc-analyze = "memkmc.cli_analyze:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
