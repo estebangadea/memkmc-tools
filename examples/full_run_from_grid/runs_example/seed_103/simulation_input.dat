@@ -1,0 +1,25 @@
+random_seed               103
+
+temperature               300.00
+pressure                  1.00
+
+n_gas_species             3
+gas_specs_names              tma    mem     mw 
+gas_energies                0.000   0.000   0.000 # eV
+gas_molec_weights           18.00   18.00   18.00 # g/mol
+gas_molar_fracs             0.000   0.000   0.000 
+
+n_surf_species            4
+surf_specs_names          tma* mem*  mw* hew* 
+surf_specs_dent              1    1    1    1 
+
+snapshots                 on event 100
+process_statistics        on event 100
+species_numbers           on event 5
+
+max_steps                 80000
+max_time                  infinity
+
+wall_time                 100800 # in seconds
+
+finish

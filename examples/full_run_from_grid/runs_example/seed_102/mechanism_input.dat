@@ -1,0 +1,69 @@
+mechanism
+
+############################################################################
+
+step sn2_degradation
+  sites 2
+  neighboring 1-2
+  initial # (entitynumber, species, dentate)
+    1 tma*    1
+    2 mw*     1
+  final
+    1 mem* 1
+    2 hew* 1
+  site_types G G
+  pre_expon  0.5
+  activ_eng  0.00
+end_step
+
+############################################################################
+
+step wat_removal1
+  sites 3
+  neighboring 1-2 2-3
+  initial # (entitynumber, species, dentate)
+    1 mw*    1
+    2 hew*   1
+    3 mem*   1
+  final
+    1 hew* 1
+    2 mem* 1
+    3 mem* 1
+  site_types G G G
+  pre_expon  2.5e+12
+  activ_eng  0.05
+end_step
+############################################################################
+############################################################################
+
+step wat_removal2
+  sites 2
+  neighboring 1-2
+  initial # (entitynumber, species, dentate)
+    1 hew*    1
+    2 mw*     1
+  final
+    1 mw*     1
+    2 hew*    1
+  site_types G G
+  pre_expon  1e+11
+  activ_eng  0.05
+end_step
+
+############################################################################
+
+step hew_elimination
+  sites 2
+  neighboring 1-2
+  initial # (entitynumber, species, dentate)
+    1 hew*    1
+    2 mem*    1
+  final
+    1 mem* 1
+    2 mem* 1
+  site_types G G
+  pre_expon  1e+08
+  activ_eng  0.05
+end_step
+############################################################################
+end_mechanism
