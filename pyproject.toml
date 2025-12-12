@@ -30,3 +30,7 @@ where = ["src"]
 
 [project.optional-dependencies]
 dev = ["pytest"]
+
+[project.scripts]
+memkmc-voxelize = "memkmc.cli_voxelize:main"
+memkmc-grid-report = "memkmc.cli_grid_report:main"

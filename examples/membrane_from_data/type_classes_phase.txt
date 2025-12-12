@@ -1,0 +1,11 @@
+# LAMMPS type -> phase class for voxelization (matches M1/M4)
+# 5 and 6 are "water-like": Cl + H2O
+1   polymer
+2   polymer
+3   tma
+4   polymer
+5   water
+6   water
+7   polymer
+8   polymer
+9   polymer
