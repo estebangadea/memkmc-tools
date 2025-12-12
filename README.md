@@ -66,7 +66,7 @@ label ix iy iz
 
 ⸻
 
-2. Full Zacros setup from a grid: memkmc-zacros-prepare-run
+### 2. Full Zacros setup from a grid: memkmc-zacros-prepare-run
 
 Given a grid and a label→species mapping, prepare all Zacros inputs for several seeds:
 
@@ -109,7 +109,7 @@ Other Zacros-related CLIs (used internally by memkmc-zacros-prepare-run but also
 
 ⸻
 
-3. Analysis: memkmc-analyze (specnum → IEC/WU/VH)
+### 3. Analysis: memkmc-analyze (specnum → IEC/WU/VH)
 
 Post-process Zacros species_numbers outputs (e.g. specnum_101.txt) into IEC/WU/VH time series:
 
@@ -140,7 +140,7 @@ The implementation lives in memkmc.analysis.specnum.
 
 ⸻
 
-4. Plotting: memkmc-plot-iec-wu (IEC/WU → figure)
+### 4. Plotting: memkmc-plot-iec-wu (IEC/WU → figure)
 
 Plot WU vs IEC curves for multiple runs and their average:
 
@@ -152,17 +152,28 @@ memkmc-plot-iec-wu \
   -o WUvsIEC.png
 ```
 
-memkmc-plot-iec-wu \
-  IEC_WU_specnum_101.dat \
-  IEC_WU_specnum_102.dat \
-  IEC_WU_specnum_103.dat \
-  -o WUvsIEC.png
+What it does:
+	•	Reads IEC/WU from each IEC_WU_*.dat.
+	•	Plots individual curves in light blue.
+	•	Interpolates them onto a common IEC grid and plots the average in red.
+	•	Saves a publication-ready PNG (4.0 × 3.5 in, 180 dpi) with:
+	•	x-axis: IEC
+	•	y-axis: WU
+	•	same axis limits/ticks style as the original script.
+
+⸻
+
+## From LAMMPS data to Zacros runs (high-level sketch)
+
+Typical workflow:
+
+### 1.	Voxelize the membrane:
 
 ```bash
 memkmc-voxelize membrane.data --format data --types type_classes.txt --spacing 4.0 --output membrane_grid.xyz
 ```
 
-2.	Prepare Zacros inputs for a set of seeds:
+### 2.	Prepare Zacros inputs for a set of seeds:
 
 ```bash
 memkmc-zacros-prepare-run membrane_grid.xyz \
@@ -171,14 +182,14 @@ memkmc-zacros-prepare-run membrane_grid.xyz \
   --outdir runs_degradation
 ```
 
-3.	Run Zacros in each seed_* directory (e.g. via SLURM).
-4.	Analyze specnum_*.txt into IEC/WU/VH:
+### 3.	Run Zacros in each seed_* directory (e.g. via SLURM).
+### 4.	Analyze specnum_*.txt into IEC/WU/VH:
 
 ```bash
 memkmc-analyze runs_degradation/seed_*/specnum_*.txt
 ```
 
-5.	Plot WU vs IEC with the average curve:
+### 5.	Plot WU vs IEC with the average curve:
 
 ```bash
 memkmc-plot-iec-wu IEC_WU_specnum_*.dat -o WUvsIEC.png
