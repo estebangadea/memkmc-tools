@@ -17,11 +17,6 @@ dependencies = [
   "matplotlib"
 ]
 
-[project.scripts]
-memkmc-voxelize = "memkmc.cli_voxelize:main"
-memkmc-zacros-inputs = "memkmc.cli_zacros_inputs:main"
-memkmc-analyze = "memkmc.cli_analyze:main"
-
 [tool.setuptools]
 package-dir = {"" = "src"}
 
@@ -33,4 +28,6 @@ dev = ["pytest"]
 
 [project.scripts]
 memkmc-voxelize = "memkmc.cli_voxelize:main"
-memkmc-grid-report = "memkmc.cli_grid_report:main"
+memkmc-zacros-inputs = "memkmc.cli_zacros_inputs:main"
+memkmc-analyze = "memkmc.cli_analyze:main"
+memkmc-zacros-lattice = "memkmc.cli_zacros_lattice:main"
