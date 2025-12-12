@@ -1,0 +1,10 @@
+# type   class
+1       polymer
+2       polymer
+3       tma
+4       polymer
+5       water
+6       water
+7       polymer
+8       polymer
+9       polymer
