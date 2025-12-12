@@ -102,9 +102,9 @@ runs_degradation/
 You can then cp your Zacros executable/template files into each seed_* directory and run.
 
 Other Zacros-related CLIs (used internally by memkmc-zacros-prepare-run but also callable directly):
-	•	memkmc-zacros-lattice – only write lattice_input.dat
-	•	memkmc-zacros-initial-state – only write state_input.dat
-	•	memkmc-zacros-inputs – only simulation_input.dat + mechanism_input.dat
+-	memkmc-zacros-lattice – only write lattice_input.dat
+-	memkmc-zacros-initial-state – only write state_input.dat
+-	memkmc-zacros-inputs – only simulation_input.dat + mechanism_input.dat
 
 
 ⸻
@@ -132,9 +132,9 @@ time   IEC   WU   VH
 ```
 
 The formulas match the original workflow:
-	•	WU from VWU (linear fit),
-	•	IEC from degradation fraction and (Mc, Mn, Md),
-	•	VH as (MW + TMA) / (MW + TMA + POL₀).
+-	WU from VWU (linear fit),
+-	IEC from degradation fraction and (Mc, Mn, Md),
+-	VH as (MW + TMA) / (MW + TMA + POL₀).
 
 The implementation lives in memkmc.analysis.specnum.
 
@@ -153,13 +153,13 @@ memkmc-plot-iec-wu \
 ```
 
 What it does:
-	•	Reads IEC/WU from each IEC_WU_*.dat.
-	•	Plots individual curves in light blue.
-	•	Interpolates them onto a common IEC grid and plots the average in red.
-	•	Saves a publication-ready PNG (4.0 × 3.5 in, 180 dpi) with:
-	•	x-axis: IEC
-	•	y-axis: WU
-	•	same axis limits/ticks style as the original script.
+-	Reads IEC/WU from each IEC_WU_*.dat.
+-	Plots individual curves in light blue.
+-	Interpolates them onto a common IEC grid and plots the average in red.
+-	Saves a publication-ready PNG (4.0 × 3.5 in, 180 dpi) with:
+-	x-axis: IEC
+-	y-axis: WU
+-	same axis limits/ticks style as the original script.
 
 ⸻
 
