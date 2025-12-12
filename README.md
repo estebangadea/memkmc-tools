@@ -14,7 +14,7 @@ This package (`memkmc`) provides:
 ## Installation
 
 ```bash
-git clone https://github.com/<your-username>/memkmc-tools.git
+git clone https://github.com/estebangadea/memkmc-tools.git
 cd memkmc-tools
 
 python3 -m venv .venv
