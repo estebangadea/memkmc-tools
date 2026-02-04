@@ -87,7 +87,7 @@ def write_cubic_pbc_lattice(
                         )
 
                     f.write(
-                        f"{site_id} {x_frac:.6f} {y_frac:.6f} {z_frac:.6f} "
+                        f"{site_id} {x_frac:.6f} {y_frac:.6f} "
                         f"{len(neighbor_ids)} "
                         + " ".join(str(n) for n in neighbor_ids)
                         + "\n"
