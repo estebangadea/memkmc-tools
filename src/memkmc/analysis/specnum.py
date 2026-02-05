@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Sequence
 
 import numpy as np
 
@@ -28,7 +27,7 @@ def _read_specnum(path: str | Path) -> tuple[np.ndarray, np.ndarray, np.ndarray,
             TMA  = col 6
             POL  = col 7
             MW   = col 8
-        (0-based indices 2, 5, 6, 7)
+        (0-based indices 2, 5, 6, 7) as in your original script.
     """
     path = Path(path)
     time: list[float] = []
@@ -62,15 +61,14 @@ def _read_specnum(path: str | Path) -> tuple[np.ndarray, np.ndarray, np.ndarray,
 def analyze_specnum_file(path: str | Path) -> SpecnumAnalysisResult:
     """Compute IEC, WU, and VH from a specnum_*.txt file.
 
-    This reproduces the original script's formulas:
+    Matches your original formulas:
 
         VWU = MW[j] / (POL[0] + TMA[0])
         WU  = 0.74637 * VWU - 0.07734
 
         deg = (TMA[0] - TMA[j]) / TMA[0]
-        IEC = 1000 * 0.33 * (1 - deg) / (
-              0.33 * (1 - deg) * Mc + 0.67 * Mn + deg * 0.33 * Md
-        )
+        IEC = 1000 * 0.33 * (1 - deg) /
+              (0.33 * (1 - deg) * Mc + 0.67 * Mn + deg * 0.33 * Md)
 
         VH  = (MW[j] + TMA[j]) / (MW[j] + TMA[j] + POL[0])
 
@@ -101,8 +99,7 @@ def analyze_specnum_file(path: str | Path) -> SpecnumAnalysisResult:
 
     # Degradation fraction and IEC
     deg = (tma0 - tma) / tma0
-    # Ensure deg stays within [0, 1] numerically
-    deg = np.clip(deg, 0.0, 1.0)
+    deg = np.clip(deg, 0.0, 1.0)  # numerical safety
 
     num = 1000.0 * 0.33 * (1.0 - deg)
     den = 0.33 * (1.0 - deg) * Mc + 0.67 * Mn + deg * 0.33 * Md
